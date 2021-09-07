@@ -3,21 +3,38 @@
     Header
     SectionMain
     Footer
+    modals-container
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import VModal from 'vue-js-modal';
 import Header from './components/header/header.vue';
 import Footer from './components/footer/footer.vue';
 import SectionMain from './blocks/main/main.vue';
+import ModalAuth from './components/modal/modalAuth/modalAuth.vue';
 
+Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
 @Component({
   components: {
     Header,
     Footer,
     SectionMain,
+    ModalAuth,
+  },
+  methods: {
+    openModal() {
+      const options = {};
+      const style = { width: "60%", height: "auto" };
+      const events = {
+        opened: () => console.log("Opened"),
+        closed: () => console.log("Closed"),
+      };
+      this.$modal.show(ModalAuth, options, style, events);
+    },
   },
 })
+
 export default class App extends Vue {}
 </script>
 

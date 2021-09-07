@@ -1,24 +1,13 @@
 <template lang="pug">
-  modal(name="my-first-modal") This is my first modal
+  .modal.modal-auth
+    span This is my first modal
 </template>
 
 <script>
 export default {
-  name: 'MyComponent',
-  methods: {
-    show() {
-      this.$modal.show('my-first-modal');
-    },
-    hide() {
-      this.$modal.hide('my-first-modal');
-    },
-  },
-  mount() {
-    this.show();
-  },
+  name: 'ModalAuth',
 };
 </script>
 
 <style lang="scss">
-
 </style>
