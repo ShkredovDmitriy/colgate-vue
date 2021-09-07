@@ -1,6 +1,6 @@
 <template lang="pug">
   .auth-menu
-    button(type="button").button.button-auth-menu Login
+    button(type="button" v-on:click="modalAuthOpen").button.button-auth-menu Login
     span.auth-menu__border
     button(type="button").button.button-auth-menu Registration
 </template>
@@ -11,6 +11,9 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   components: {
   },
+  props: [
+    'modalAuthOpen',
+  ],
 })
 export default class authMenu extends Vue {}
 </script>

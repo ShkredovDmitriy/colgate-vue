@@ -3,7 +3,7 @@
     .header-wrapper
       logoMain
       navMain
-      authMenu
+      authMenu(v-bind:modalAuthOpen="modalAuthOpen")
 </template>
 
 <script lang="ts">
@@ -18,6 +18,9 @@ import authMenu from '../auth/auth-menu/auth-menu.vue';
     navMain,
     authMenu,
   },
+  props: [
+    'modalAuthOpen',
+  ],
 })
 export default class header extends Vue {}
 </script>

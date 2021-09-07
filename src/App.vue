@@ -1,20 +1,21 @@
 <template lang="pug">
   #app
-    Header
+    Header(v-bind:modalAuthOpen="modalAuthOpen")
     SectionMain
     Footer
-    modals-container
 </template>
 
-<script lang="ts">
+<script>
 import { Component, Vue } from 'vue-property-decorator';
 import VModal from 'vue-js-modal';
+import Vuelidate from 'vuelidate';
 import Header from './components/header/header.vue';
 import Footer from './components/footer/footer.vue';
 import SectionMain from './blocks/main/main.vue';
 import ModalAuth from './components/modal/modalAuth/modalAuth.vue';
 
-Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
+Vue.use(VModal);
+Vue.use(Vuelidate);
 @Component({
   components: {
     Header,
@@ -23,14 +24,19 @@ Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
     ModalAuth,
   },
   methods: {
-    openModal() {
-      const options = {};
-      const style = { width: "60%", height: "auto" };
-      const events = {
-        opened: () => console.log("Opened"),
-        closed: () => console.log("Closed"),
-      };
-      this.$modal.show(ModalAuth, options, style, events);
+    modalAuthOpen() {
+      this.$modal.show(
+        ModalAuth,
+        {
+          text: 'This text is passed as a property',
+        },
+        {
+          height: 'auto',
+          adaptive: true,
+          classes: 'modal modal-auth',
+          style: {},
+        },
+      );
     },
   },
 })
@@ -42,7 +48,9 @@ export default class App extends Vue {}
 html, body {
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
   font-size: calc(100vw / 1920 * 16);
+  line-height: 1;
 }
 * {
   box-sizing: border-box;
@@ -55,5 +63,16 @@ ul {
 #app {
   font-family: 'Roboto', sans-serif;
 }
-
+.vm--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  position: static;
+  width: 100%;
+  max-width: 28.125rem;
+  z-index: 200;
+}
 </style>
