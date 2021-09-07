@@ -1,7 +1,7 @@
 <template lang="pug">
   form(
-    id="formAuth"
-    class="form form-auth"
+    id="formReg"
+    class="form form-reg"
     @submit.prevent="submit"
   )
     .form-row

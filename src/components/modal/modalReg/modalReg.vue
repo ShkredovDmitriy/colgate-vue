@@ -1,20 +1,20 @@
 <template lang="pug">
   Modal(
-    name='modal-auth'
-    title='Login'
+    name='modal-reg'
+    title='Registration'
   )
-    FormAuth
+    FormReg
 </template>
 
 <script>
 import Modal from '@/components/modal/modal/modal.vue';
-import FormAuth from '@/components/form/formAuth/formAuth.vue';
+import FormReg from '@/components/form/formReg/formReg.vue';
 
 export default {
-  name: 'ModalAuth',
+  name: 'ModalReg',
   components: {
     Modal,
-    FormAuth,
+    FormReg,
   },
 };
 </script>

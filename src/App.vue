@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    Header(v-bind:modalAuthOpen="modalAuthOpen")
+    Header
     SectionMain
     Footer
 </template>
@@ -12,32 +12,15 @@ import Vuelidate from 'vuelidate';
 import Header from './components/header/header.vue';
 import Footer from './components/footer/footer.vue';
 import SectionMain from './blocks/main/main.vue';
-import ModalAuth from './components/modal/modalAuth/modalAuth.vue';
 
 Vue.use(VModal);
 Vue.use(Vuelidate);
+
 @Component({
   components: {
     Header,
     Footer,
     SectionMain,
-    ModalAuth,
-  },
-  methods: {
-    modalAuthOpen() {
-      this.$modal.show(
-        ModalAuth,
-        {
-          text: 'This text is passed as a property',
-        },
-        {
-          height: 'auto',
-          adaptive: true,
-          classes: 'modal modal-auth',
-          style: {},
-        },
-      );
-    },
   },
 })
 
