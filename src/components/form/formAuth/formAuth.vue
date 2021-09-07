@@ -27,7 +27,7 @@
             v-model.trim="password"
             @input="setPassword($event.target.value)"
           )
-          .error(v-if="!$v.password.required&&$v.password.$error") Field is required
+          .error(v-if="!$v.password.required&&$v.password.$error") {{messages.required}}
           .error(v-if="!$v.password.password&&$v.password.$error") Use letters and numbers
     .form-row
       .form-col
@@ -40,6 +40,7 @@
 <script>
 import { required } from 'vuelidate/lib/validators';
 import { email, password } from '@/helpers/regex';
+import messages from '@/helpers/messages';
 
 export default {
   name: 'FormAuth',
@@ -47,6 +48,7 @@ export default {
     return {
       login: '',
       password: '',
+      messages,
     };
   },
   validations: {
@@ -69,11 +71,9 @@ export default {
       this.$v.password.$touch();
     },
     submit() {
-      console.log('submit!');
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR';
-        console.log('Error!');
       }
     },
   },
