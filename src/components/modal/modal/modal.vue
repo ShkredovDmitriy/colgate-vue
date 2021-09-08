@@ -1,9 +1,7 @@
 <template lang="pug">
   .modal-wrapper
     .modal__title {{title}}
-    button(
-      type="button"
-      class="button button-modal-close"
+    ButtonModalClose(
       @click="$modal.hide(name)"
     )
     .modal-body
@@ -11,9 +9,14 @@
 </template>
 
 <script>
+import ButtonModalClose from '@/elements/button/buttonModalClose/buttonModalClose.vue';
+
 export default {
   name: 'Modal',
   props: ['title', 'name'],
+  components: {
+    ButtonModalClose,
+  },
 };
 </script>
 
@@ -31,18 +34,5 @@ export default {
   }
   .modal-body {
     padding-top: 2rem;
-  }
-  .button-modal-close {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    width: 1.25rem;
-    height: 1.25rem;
-    background-color: red;
-    svg {
-      display: block;
-      width: 1rem;
-      height: 1rem;
-    }
   }
 </style>

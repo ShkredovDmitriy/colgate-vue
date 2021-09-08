@@ -31,16 +31,14 @@
           .error(v-if="!$v.password.password&&$v.password.$error") {{messages.password}}
     .form-row
       .form-col
-        button(
-          class="button button-form"
-          type="submit"
-        ) Enter
+        ButtonForm Enter
 </template>
 
 <script>
 import { required } from 'vuelidate/lib/validators';
 import { email, password } from '@/helpers/regex';
 import messages from '@/helpers/messages';
+import ButtonForm from '@/elements/button/buttonForm/buttonForm.vue';
 
 export default {
   name: 'FormAuth',
@@ -77,6 +75,9 @@ export default {
       }
     },
   },
+  components: {
+    ButtonForm,
+  },
 };
 </script>
 
@@ -112,21 +113,5 @@ export default {
   font-size: 1rem;
   font-weight: 500;
   color: black;
-}
-.button-form {
-  width: 100%;
-  height: 2.5rem;
-  border: 2px solid red;
-  border-radius: 0.3125rem;
-  background-color: red;
-  font-size: 1rem;
-  font-weight: 700;
-  color: white;
-  transition: 0.3s;
-  text-transform: uppercase;
-  &:hover {
-    background-color: white;
-    color: red;
-  }
 }
 </style>

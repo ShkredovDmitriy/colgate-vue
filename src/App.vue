@@ -1,5 +1,7 @@
 <template lang="pug">
   #app
+    .svg-sprite
+      include ./assets/sprite.svg
     Header
     SectionMain
     Footer
@@ -37,6 +39,11 @@ html, body {
 }
 * {
   box-sizing: border-box;
+}
+.svg-sprite {
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 ul {
   margin: 0;

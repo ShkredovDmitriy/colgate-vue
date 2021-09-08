@@ -44,15 +44,6 @@ export default class authMenu extends Vue {}
     height: 0.875rem;
     background-color: black;
   }
-  .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
-  }
   .button-auth-menu {
     font-size: 1.125rem;
     color: black;
