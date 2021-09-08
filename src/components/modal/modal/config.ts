@@ -32,10 +32,13 @@ const modalRegShow = (cont: any) => {
   );
 };
 
-const modalInfoShow = (cont: any) => {
+const modalInfoShow = (cont: any, title: string, message: string) => {
   cont.$modal.show(
     ModalInfo,
-    {},
+    {
+      title,
+      message,
+    },
     {
       name: 'modal-info',
       height: 'auto',

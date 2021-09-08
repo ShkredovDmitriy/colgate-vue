@@ -4,4 +4,14 @@ const messages = {
   password: 'Use letters and numbers, from 6 to 20 chars',
 };
 
-export default messages;
+const errors = {
+  network: {
+    title: 'Ошибка сети',
+    message: 'Проверьте интернет соединение.',
+  },
+};
+
+export {
+  messages,
+  errors,
+};

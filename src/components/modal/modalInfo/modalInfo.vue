@@ -1,9 +1,9 @@
 <template lang="pug">
   Modal(
     name='modal-info'
-    title='xxx'
+    :title='title'
   )
-    .modal-info__message yyy
+    .modal-info__message {{message}}
 </template>
 
 <script>
@@ -14,6 +14,7 @@ export default {
   components: {
     Modal,
   },
+  props: ['title', 'message'],
 };
 </script>
 

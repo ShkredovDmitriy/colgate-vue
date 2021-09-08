@@ -6,17 +6,12 @@
   )
     .form-row
       .form-col
-        .input-container(:class="{ 'error': $v.login.$error }")
-          input(
-            class="input-field"
-            id="formAuthLogin"
-            placeholder="E-mail"
-            v-model.trim="login"
-            @input="setLogin($event.target.value)"
-          )
-          .error(v-if="!$v.login.required&&$v.login.$error") {{messages.required}}
-          .error(v-if="!$v.login.email&&$v.login.$error") {{messages.email}}
-
+        InputText(
+          :name="login"
+          placeholder="Email"
+          :onInput='setLogin'
+          :error="{ 'error': $v.login.$error }"
+        )
     .form-row
       .form-col
         .input-container(:class="{ 'error': $v.password.$error }")
@@ -36,9 +31,10 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators';
+import InputText from '@/elements/input/input-text/input-text.vue';
 import { apiLogin } from '@/api/api';
 import { email, password } from '@/helpers/regex';
-import messages from '@/config/messages';
+import { messages, errors } from '@/config/messages';
 import ButtonForm from '@/elements/button/buttonForm/buttonForm.vue';
 import { modalAuthHide, modalInfoShow } from '@/components/modal/modal/config';
 
@@ -67,11 +63,11 @@ export default {
     },
     apiError() {
       modalAuthHide(this);
-      modalInfoShow(this);
+      modalInfoShow(this, errors.network.title, errors.network.message);
       console.log('api error');
     },
-    setLogin(value) {
-      this.login = value;
+    setLogin(event) {
+      this.login = event.target.value;
       this.$v.login.$touch();
     },
     setPassword(value) {
@@ -88,6 +84,7 @@ export default {
     },
   },
   components: {
+    InputText,
     ButtonForm,
   },
 };
@@ -101,29 +98,5 @@ export default {
   &:nth-child(n + 2) {
     margin-top: 1.5rem;
   }
-}
-.input-container {
-  width: 100%;
-  &.error {
-    .input-field {
-      border: 1px solid red;
-    }
-  }
-  .error {
-    margin-top: 0.25rem;
-    font-size: 0.875rem;
-    color: red;
-  }
-}
-.input-field {
-  width: 100%;
-  height: 2.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  border: 1px solid grey;
-  border-radius: 0.3125rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: black;
 }
 </style>
