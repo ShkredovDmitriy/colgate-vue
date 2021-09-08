@@ -2,6 +2,7 @@
   button.button(
     :type="type"
     :class="variant"
+    @click="clickHandler"
   )
     slot
 </template>
@@ -9,7 +10,13 @@
 <script>
 export default {
   name: 'Button',
-  props: ['variant', 'type'],
+  props: ['variant', 'type', 'customEvent'],
+  methods: {
+    clickHandler() {
+      console.log(`button ${this.variant} click`);
+      if (this.customEvent) this.customEvent();
+    },
+  },
 };
 </script>
 

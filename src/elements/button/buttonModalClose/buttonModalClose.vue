@@ -2,6 +2,7 @@
   Button(
     variant="button-modal-close"
     type="button"
+    :customEvent='customEvent'
   )
     svg
       use(href="#icon-modal-close")
@@ -15,6 +16,7 @@ export default {
   components: {
     Button,
   },
+  props: ['customEvent'],
 };
 </script>
 

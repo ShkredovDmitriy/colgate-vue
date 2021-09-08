@@ -36,9 +36,11 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators';
+import { apiLogin } from '@/api/api';
 import { email, password } from '@/helpers/regex';
-import messages from '@/helpers/messages';
+import messages from '@/config/messages';
 import ButtonForm from '@/elements/button/buttonForm/buttonForm.vue';
+import { modalAuthHide, modalInfoShow } from '@/components/modal/modal/config';
 
 export default {
   name: 'FormAuth',
@@ -60,6 +62,14 @@ export default {
     },
   },
   methods: {
+    apiSuccess() {
+      console.log('api success');
+    },
+    apiError() {
+      modalAuthHide(this);
+      modalInfoShow(this);
+      console.log('api error');
+    },
     setLogin(value) {
       this.login = value;
       this.$v.login.$touch();
@@ -72,6 +82,8 @@ export default {
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR';
+      } else {
+        apiLogin(this.apiSuccess, this.apiError);
       }
     },
   },

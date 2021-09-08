@@ -37,7 +37,7 @@
 <script>
 import { required } from 'vuelidate/lib/validators';
 import { email, password } from '@/helpers/regex';
-import messages from '@/helpers/messages';
+import messages from '@/config/messages';
 import ButtonForm from '@/elements/button/buttonForm/buttonForm.vue';
 
 export default {

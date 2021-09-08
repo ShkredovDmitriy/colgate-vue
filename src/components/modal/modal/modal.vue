@@ -2,7 +2,7 @@
   .modal-wrapper
     .modal__title {{title}}
     ButtonModalClose(
-      @click="$modal.hide(name)"
+      :customEvent='someEvent'
     )
     .modal-body
       slot
@@ -16,6 +16,11 @@ export default {
   props: ['title', 'name'],
   components: {
     ButtonModalClose,
+  },
+  methods: {
+    someEvent() {
+      this.$modal.hide(this.name);
+    },
   },
 };
 </script>
